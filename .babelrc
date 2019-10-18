@@ -1,0 +1,19 @@
+{
+    "presets": [
+        ["@babel/preset-env", {
+            "modules": false,
+            "corejs": 3,
+            "useBuiltIns": "entry",
+            "targets": {
+                "browsers": [
+                    "Chrome >= 71",
+                    "iOS >= 11",
+                    "Safari >= 11",
+                    "Firefox >= 60"
+                ]
+            }
+        }],
+        "@babel/preset-react",
+        "@babel/preset-flow"
+    ]
+}

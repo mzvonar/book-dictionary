@@ -45,22 +45,23 @@ module.exports = {
                     path.join(__dirname, 'src')
                 ],
                 loader: 'babel-loader',
-                options: {
-                    ...babelConfig,
-                    cacheDirectory: true,
-                    cacheIdentifier: JSON.stringify({
-                        options: babelConfig,
-                        "@babel/core": babelVersion,
-                        "@babel/loader": babelLoaderVersion,
-                        "NODE_ENV": process.env.NODE_ENV || 'development'
-                    })
-                }
+                // options: {
+                //     ...babelConfig,
+                //     cacheDirectory: true,
+                //     cacheIdentifier: JSON.stringify({
+                //         options: babelConfig,
+                //         "@babel/core": babelVersion,
+                //         "@babel/loader": babelLoaderVersion,
+                //         "NODE_ENV": process.env.NODE_ENV || 'development'
+                //     })
+                // }
             }
         ]
     },
     plugins: [
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+            CONFIG: JSON.stringify(config)
         }),
         new CleanWebpackPlugin({
             verbose: false,

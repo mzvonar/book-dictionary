@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './modules/App';
+import createStore from './createStore';
+import Main from './modules/Main';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -9,8 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error('Cannot render app. Container element not found');
     }
 
+    const store = createStore();
+
     ReactDOM.render(
-        <App />,
+        <Main store={store} />,
         container
     );
 });

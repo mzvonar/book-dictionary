@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  port = 3000
+  functions = "src/functions"
+  publish = "public"
+
+[dev]
+  command = "npm start"
+  port = 3000
+  targetPort = 3000
+  publish = "public"

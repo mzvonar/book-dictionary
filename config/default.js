@@ -27,6 +27,16 @@ if(!release) {
 module.exports = {
     "title": "Book dictionary",
     "port": 3000,
+    firebase: {
+        apiKey: "AIzaSyBqNncTpVt_XW7bWoOaZkGe7cXYAIsCN2M",
+        authDomain: "book-dictionary.firebaseapp.com",
+        databaseURL: "https://book-dictionary.firebaseio.com",
+        projectId: "book-dictionary",
+        storageBucket: "book-dictionary.appspot.com",
+        messagingSenderId: "926031760847",
+        appId: "1:926031760847:web:a3c877e7d242c01bba96ba",
+        measurementId: "G-ST1GB887N9"
+    },
     dirs: {
         logs: path.join(__dirname, './../logs'),
         public: path.join(__dirname, './../public')
