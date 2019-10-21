@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "netlify-lambda install",
-    "build": "NODE_ENV=production webpack",
+    "build:client": "NODE_ENV=production webpack",
     "start": "webpack-dev-server",
     "netlify": "netlify",
     "lambda": "netlify-lambda",

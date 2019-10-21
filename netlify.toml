@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm run build:client"
   port = 3000
   functions = "src/functions"
   publish = "public"
