@@ -6,7 +6,7 @@ export type State = null | Book;
 
 const initialState = null;
 
-export default function app(state: State = initialState, action: Action): State {
+export default function book(state: State = initialState, action: Action): State {
     switch(action.type) {
         case constants.SET_BOOK: {
             return action.data;

@@ -1,6 +1,6 @@
 // @flow
 import { STATUS_SUCCESS } from '../middlewares/api';
-import type { Action, Book } from '../types';
+import type { Action } from '../types';
 import * as constants from '../constants/translateConstants';
 
 export type State = {
@@ -8,7 +8,7 @@ export type State = {
 };
 
 const initialState = {
-    translations: null
+    translations: ['auto']
 };
 
 export default function app(state: State = initialState, action: Action): State {
@@ -20,6 +20,15 @@ export default function app(state: State = initialState, action: Action): State 
                     translations: action.response
                 };
             }
+            else {
+                return state;
+            }
+
+        case constants.SET_TRANSLATIONS:
+            return {
+                ...state,
+                translations: action.data
+            };
 
 
         default:

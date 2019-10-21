@@ -37,6 +37,7 @@ module.exports = {
         appId: "1:926031760847:web:a3c877e7d242c01bba96ba",
         measurementId: "G-ST1GB887N9"
     },
+    "microsoft": {},
     dirs: {
         logs: path.join(__dirname, './../logs'),
         public: path.join(__dirname, './../public')

@@ -7,3 +7,4 @@ export type * from './book';
 export type { State } from './state';
 export type * from './redux';
 export type * from './user';
+export type * from './word';

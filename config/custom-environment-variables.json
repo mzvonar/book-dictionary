@@ -1,3 +1,10 @@
 {
-  "port": "PORT"
+  "port": "PORT",
+  "firebase": {
+    "certificate": "GOOGLE_APPLICATION_CREDENTIALS"
+  },
+  "microsoft": {
+    "key": "MICROSOFT_TRANSLATOR_KEY",
+    "endpoint": "MICROSOFT_TRANSLATOR_ENDPOINT"
+  }
 }

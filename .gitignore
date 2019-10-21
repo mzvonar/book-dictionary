@@ -3,3 +3,5 @@ package-lock.json
 
 # Local Netlify folder
 .netlify
+/src/functions/firebase-service-account.json
+/src/functions/translate-service-account.json

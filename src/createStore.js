@@ -3,6 +3,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import type { Middleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
+import thunk from 'redux-thunk';
 import createSagaMiddleware from 'redux-saga'
 import type { State, Action, Dispatch } from './types';
 import apiMiddleware from './middlewares/api';
@@ -30,6 +31,7 @@ export default function(initialState: State = initialStoreState, customMiddlewar
     const sagaMiddleware = createSagaMiddleware();
 
     const middlewares = [
+        thunk,
         apiMiddleware(config.api),
         sagaMiddleware
     ];

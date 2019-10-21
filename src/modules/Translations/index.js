@@ -1,3 +1,3 @@
-import Translations from './Translations';
+import TranslationsContainer from './containers/TranslationsContainer';
 
-export default Translations;
+export default TranslationsContainer;
