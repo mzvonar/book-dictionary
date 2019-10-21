@@ -3,6 +3,11 @@ import type { State } from '../types';
 
 export const subStateSelector = (state: State) => state.user;
 
+export const userInitializedSelector = (state: State) => {
+    const subState = subStateSelector(state);
+    return subState && subState.initialized;
+};
+
 export const userIdSelector = (state: State) => {
     const subState = subStateSelector(state);
     return subState && subState.userId;
