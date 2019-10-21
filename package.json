@@ -4,7 +4,7 @@
   "description": "Dictionary customized for reading books",
   "main": "index.js",
   "scripts": {
-    "prebuild": "netlify-lambda install",
+    "postinstall": "netlify-lambda install",
     "build:client": "NODE_ENV=production webpack",
     "start": "webpack-dev-server",
     "netlify": "netlify",
