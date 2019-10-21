@@ -8,7 +8,7 @@ export type State = {
 };
 
 const initialState = {
-    translations: ['auto']
+    translations: null
 };
 
 export default function app(state: State = initialState, action: Action): State {

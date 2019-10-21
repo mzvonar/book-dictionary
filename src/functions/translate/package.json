@@ -1,0 +1,11 @@
+{
+  "name": "book-dictionary-translate-function",
+  "version": "1.0.0",
+  "description": "Book dictionary translate function",
+  "dependencies": {
+    "@google-cloud/translate": "4.2.0",
+    "config": "3.2.3",
+    "firebase-admin": "8.6.1",
+    "superagent": "5.1.0"
+  }
+}

@@ -25,7 +25,7 @@ export default function Search() {
     const dispatch = useDispatch();
     const inputRef = useRef();
     const hasTranslations = useSelector(hasTranslationsSelector);
-    const [word, setWord] = useState('car');
+    const [word, setWord] = useState('');
 
     const handleChange = (e) => setWord(e.target.value);
 
