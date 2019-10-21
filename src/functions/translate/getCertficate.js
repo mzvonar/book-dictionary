@@ -1,9 +1,7 @@
-const config = require('config');
-
 module.exports = function() {
     let certificate;
-    if(config.firebase.certificate) {
-        certificate = require(config.firebase.certificate);
+    if(process.env.GOOGLE_APPLICATION_CREDENTIALS) {
+        certificate = require(process.env.GOOGLE_APPLICATION_CREDENTIALS);
     }
     else {
         certificate = JSON.parse(process.env.FIREBASE_CONFIG);

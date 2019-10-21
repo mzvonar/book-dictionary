@@ -1,4 +1,3 @@
-const config = require('config');
 const superagent = require('superagent');
 
 const auth = {
@@ -13,8 +12,8 @@ function authenticate() {
         }
 
         superagent
-            .post(`${config.microsoft.endpoint}`)
-            .set('Ocp-Apim-Subscription-Key', config.microsoft.key)
+            .post(`${process.env.MICROSOFT_TRANSLATOR_ENDPOINT}`)
+            .set('Ocp-Apim-Subscription-Key', process.env.MICROSOFT_TRANSLATOR_KEY)
             .then(response => {
                 console.log('response.body: ', response.body);
 
