@@ -28,7 +28,6 @@ module.exports = {
     "title": "Book dictionary",
     "port": 3000,
     firebase: {
-        apiKey: "AIzaSyBqNncTpVt_XW7bWoOaZkGe7cXYAIsCN2M",
         authDomain: "book-dictionary.firebaseapp.com",
         databaseURL: "https://book-dictionary.firebaseio.com",
         projectId: "book-dictionary",
