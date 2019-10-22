@@ -1,6 +1,7 @@
 {
   "port": "PORT",
   "firebase": {
+    "apiKey": "FIREBASE_API_KEY",
     "certificate": "GOOGLE_APPLICATION_CREDENTIALS"
   },
   "microsoft": {
