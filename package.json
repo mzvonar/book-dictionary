@@ -33,6 +33,7 @@
     "@babel/preset-env": "7.6.3",
     "@babel/preset-flow": "7.0.0",
     "@babel/preset-react": "7.6.3",
+    "@google-cloud/translate": "4.2.0"
     "@material-ui/core": "4.5.1",
     "@material-ui/icons": "4.5.1",
     "@sentry/cli": "1.48.0",
@@ -62,7 +63,7 @@
   },
   "devDependencies": {
     "flow-bin": "0.109.0",
-    "netlify-cli": "2.18.2",
+    "netlify-cli": "2.19.0",
     "webpack-dev-server": "3.8.2"
   }
 }
