@@ -15,6 +15,7 @@ function Sync() {
     const dispatch = useDispatch();
     const userId = useSelector(userIdSelector);
     const user = useSelector(userSelector);
+    const bookId = user && user.activeBook;
     const book = useSelector(bookSelector);
 
     useEffect(() => {
@@ -48,11 +49,41 @@ function Sync() {
     useEffect(() => {
         let unsubscribe;
 
-        debug('User changed: ', user);
+        if(userId) {
+            const collection = `users/${userId}/books`;
+            debug(`Subscribing to books collection: ${collection}`);
+            unsubscribe = firestore.collection(collection)
+                .onSnapshot((querySnapshot) => {
+                    const books = [];
+                    querySnapshot.forEach(doc => {
+                        const book = {
+                            name: doc.get('name'),
+                            id: doc.id
+                        };
 
-        if(user) {
-            const collection = `users/${user.id}/books`;
-            const bookId = 'dune';
+                        books.push(book)
+                    });
+
+                    dispatch(bookActions.setBooks(books));
+                });
+        }
+
+        return () => {
+            if(unsubscribe) {
+                debug('Unsubscribing from words collection');
+                unsubscribe();
+            }
+        }
+    }, [userId]);
+
+    useEffect(() => {
+        let unsubscribe;
+
+        debug('BookId changed: ', bookId);
+
+
+        const collection = `users/${userId}/books`;
+        if(userId && bookId) {
             debug(`Subscribing to book data: ${collection}/${bookId}`);
             unsubscribe = firestore.collection(collection).doc(bookId)
                 .onSnapshot((doc) => {
@@ -73,15 +104,15 @@ function Sync() {
                 unsubscribe();
             }
         }
-    }, [user]);
+    }, [userId, bookId]);
 
     useEffect(() => {
         let unsubscribe;
 
-        debug('Book changed: ', book);
+        debug('BookId changed: ', bookId);
 
-        if(user && book) {
-            const collection = `users/${user.id}/books/${book.id}/words`;
+        if(userId && bookId) {
+            const collection = `users/${userId}/books/${bookId}/words`;
             debug(`Subscribing to words collection: ${collection}`);
             unsubscribe = firestore.collection(collection)
                 .onSnapshot((querySnapshot) => {
@@ -98,7 +129,7 @@ function Sync() {
                 unsubscribe();
             }
         }
-    }, [user, book]);
+    }, [userId, bookId]);
 
     return null;
 }

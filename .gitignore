@@ -6,3 +6,4 @@ package-lock.json
 /src/functions/translate/firebase-service-account.json
 .idea
 .firebase
+.env

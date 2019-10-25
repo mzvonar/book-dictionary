@@ -1,6 +1,7 @@
 // @flow
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import translateActions from '../../actions/translateActions';
 import { listSelector } from '../../selectors/wordSelectors';
@@ -10,6 +11,7 @@ export default function Words() {
     const dispatch = useDispatch();
     const list = useSelector(listSelector);
     const [activeWord, setActiveWord] = useState();
+    const hasWords = list && list.length > 0;
 
     const onChange = (wordId, isActive) => {
         if(isActive) {
@@ -28,7 +30,14 @@ export default function Words() {
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
             <div>
-                {list.map(word => (
+                {!hasWords &&
+                    <FormattedMessage
+                        id="word.noWords"
+                        defaultMessage="No translations yet"
+                    />
+                }
+
+                {hasWords && list.map(word => (
                     <Word
                         key={word}
                         wordId={word}

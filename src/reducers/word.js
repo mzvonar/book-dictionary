@@ -1,5 +1,6 @@
 // @flow
 import type { Action, Word } from '../types';
+import * as bookConstants from '../constants/bookConstants';
 import * as constants from '../constants/wordConstants';
 
 export type State = {
@@ -16,6 +17,10 @@ const initialState = {
 
 export default function word(state: State = initialState, action: Action): State {
     switch(action.type) {
+        case bookConstants.SET_BOOK: {
+            return initialState;
+        }
+
         case constants.SET_WORD: {
             const index = state.list.indexOf(action.data.word);
 

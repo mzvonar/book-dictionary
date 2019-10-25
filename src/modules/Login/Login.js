@@ -34,9 +34,6 @@ export default function Login() {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        console.log('email: ', email);
-        console.log('password: ', password);
-
         firebase.auth().signInWithEmailAndPassword(email, password)
             .catch((error) => {
                 debug('User login error'. error);

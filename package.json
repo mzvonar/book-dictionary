@@ -6,8 +6,8 @@
   "scripts": {
     "postinstall": "netlify-lambda install",
     "build:client": "NODE_ENV=production webpack",
-    "start": "webpack-dev-server",
-    "netlify": "netlify",
+    "start": "netlify dev",
+    "dev": "webpack-dev-server",
     "lambda": "netlify-lambda",
     "firebase": "firebase",
     "firebase:rules": "firebase deploy --only firestore",
@@ -39,10 +39,12 @@
     "@sentry/cli": "1.48.0",
     "@sentry/node": "5.7.1",
     "babel-loader": "8.0.6",
+    "classnames": "2.2.6",
     "clean-webpack-plugin": "3.0.0",
     "config": "3.2.3",
     "core-js": "3.3.2",
     "debug": "4.1.1",
+    "dotenv": "8.2.0",
     "firebase": "7.2.0",
     "firebase-admin": "8.6.1",
     "firebase-tools": "7.6.0",
@@ -63,7 +65,7 @@
   },
   "devDependencies": {
     "flow-bin": "0.109.0",
-    "netlify-cli": "2.19.0",
+    "netlify-cli": "2.19.3",
     "webpack-dev-server": "3.8.2"
   }
 }
