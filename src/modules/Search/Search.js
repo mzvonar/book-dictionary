@@ -105,6 +105,7 @@ export default function Search() {
                     getSuggestionValue={getSuggestionValue}
                     renderSuggestion={SearchSuggestion}
                     inputProps={{
+                        inputRef,
                         classes,
                         id: 'react-autosuggest-simple',
                         label: 'Search',

@@ -7,7 +7,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 
 
 function SearchInput(inputProps) {
-    const { classes, inputRef = () => {}, ref, onClearClick, ...other } = inputProps;
+    const { classes, inputRef, ref, onClearClick, ...other } = inputProps;
 
     return (
         <TextField
@@ -17,7 +17,14 @@ function SearchInput(inputProps) {
             InputProps={{
                 inputRef: node => {
                     ref(node);
-                    inputRef(node);
+                    if(inputRef) {
+                        if(typeof inputRef === 'function') {
+                            inputRef(node);
+                        }
+                        else {
+                            inputRef.current = node;
+                        }
+                    }
                 },
                 classes: {
                     input: classes.input,
