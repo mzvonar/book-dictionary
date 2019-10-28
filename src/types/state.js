@@ -1,14 +1,14 @@
 // @flow
-import type { State as AppState } from '../reducers/app';
-import type { State as CarsState } from '../reducers/cars';
-import type { State as ErrorState } from '../reducers/error';
-import type { State as PlanesState } from '../reducers/planes';
-import type { State as ZonesState } from '../reducers/zones';
+import type { State as BookState } from '../reducers/book';
+import type { State as BooksState } from '../reducers/books';
+import type { State as TranslateState } from '../reducers/translate';
+import type { State as UserState } from '../reducers/user';
+import type { State as WordState } from '../reducers/word';
 
 export type State = $ReadOnly<{
-    app: AppState,
-    cars: CarsState,
-    error: ErrorState,
-    planes: PlanesState,
-    zones: ZonesState
+    book: BookState,
+    books: BooksState,
+    translate: TranslateState,
+    user: UserState,
+    word: WordState
 }>;

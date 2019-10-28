@@ -41,6 +41,28 @@ export default function word(state: State = initialState, action: Action): State
             };
         }
 
+        case constants.UNSET_WORD: {
+            const wordId = action.data;
+            const index = state.list.indexOf(wordId);
+
+            let list = state.list;
+            if(index !== -1) {
+                list = [].concat(state.list);
+                list.splice(index, 1);
+            }
+
+            let entities = state.entities;
+            if(entities[wordId]) {
+                entities = {...state.entities};
+                delete entities[wordId];
+            }
+
+            return {
+                list,
+                entities
+            };
+        }
+
         default:
             return state;
     }

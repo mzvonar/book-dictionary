@@ -8,7 +8,12 @@ export const listSelector = (state: State) => {
     return subState.list;
 };
 
-export const makeEntitySelector = (word: string) => (state: State) => {
+export const entitiesSelector = (state: State) => {
     const subState = subStateSelector(state);
-    return subState.entities[word];
+    return subState.entities;
+};
+
+export const makeEntitySelector = (word: string) => (state: State) => {
+    const entities = entitiesSelector(state);
+    return entities[word];
 };

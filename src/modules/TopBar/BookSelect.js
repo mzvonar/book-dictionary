@@ -41,7 +41,7 @@ export default function BookSelect({ value, books, onChange, onCreateNew }: Prop
     const onClose = () => setTimeout(() => setOpen(false));
 
     return (
-        <FormControl variant="outlined" className={classes.formControl}>
+        <FormControl variant="outlined" margin="dense" className={classes.formControl}>
             <Select
                 value={value ? value.id : ''}
                 displayEmpty
@@ -68,6 +68,7 @@ export default function BookSelect({ value, books, onChange, onCreateNew }: Prop
                         }
                     </em>
                 </MenuItem>
+
                 {books.map(book => (
                     <MenuItem key={book.id} value={book.id}>{book.name}</MenuItem>
                 ))}

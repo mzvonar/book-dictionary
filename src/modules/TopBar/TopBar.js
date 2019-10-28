@@ -26,7 +26,11 @@ const useStyles = makeStyles({
     }
 });
 
-export default function TopBar() {
+type Props = $ReadOnly<{
+    onMenuClick: () => void
+}>;
+
+export default function TopBar({ onMenuClick }: Props) {
     const classes = useStyles();
     const [creating, setCreating] = useState();
     const userId = useSelector(userIdSelector);
@@ -69,7 +73,7 @@ export default function TopBar() {
     return (
         <AppBar position="static">
             <Toolbar>
-                <IconButton edge="start" color="inherit" aria-label="menu">
+                <IconButton edge="start" color="inherit" aria-label="menu" onClick={onMenuClick}>
                     <MenuIcon />
                 </IconButton>
 

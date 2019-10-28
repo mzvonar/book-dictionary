@@ -116,9 +116,14 @@ function Sync() {
             debug(`Subscribing to words collection: ${collection}`);
             unsubscribe = firestore.collection(collection)
                 .onSnapshot((querySnapshot) => {
-                    querySnapshot.forEach(doc => {
-                        const word = doc.data();
-                        dispatch(wordActions.setWord(word));
+                    querySnapshot.docChanges().forEach(change => {
+                        if(change.type === 'added' || change.type === 'modified') {
+                            const word = change.doc.data();
+                            dispatch(wordActions.setWord(word));
+                        }
+                        else if(change.type === 'removed') {
+                            dispatch(wordActions.unsetWord(change.doc.id));
+                        }
                     });
                 });
         }
