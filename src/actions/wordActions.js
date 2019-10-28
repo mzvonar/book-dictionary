@@ -2,6 +2,11 @@
 import type { Word } from '../types';
 import * as constants from '../constants/wordConstants';
 
+type SetWordsAction = {|
+    type: typeof constants.SET_WORDS,
+    data: $ReadOnlyArray<Word>
+|};
+
 type SetWordAction = {|
     type: typeof constants.SET_WORD,
     data: Word
@@ -18,6 +23,11 @@ export type WordAction =
 
 
 export default {
+    setWords: (words: $ReadOnlyArray<Word>): SetWordsAction => ({
+        type: constants.SET_WORDS,
+        data: words
+    }),
+
     setWord: (word: Word): SetWordAction => ({
         type: constants.SET_WORD,
         data: word

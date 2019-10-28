@@ -1,5 +1,5 @@
 // @flow
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Debug from 'debug';
 import firestore from '../../services/firestore';
@@ -13,6 +13,7 @@ const debug = Debug('book:modules:sync');
 
 function Sync() {
     const dispatch = useDispatch();
+    const initWordsRef = useRef();
     const userId = useSelector(userIdSelector);
     const user = useSelector(userSelector);
     const bookId = user && user.activeBook;
@@ -116,19 +117,34 @@ function Sync() {
             debug(`Subscribing to words collection: ${collection}`);
             unsubscribe = firestore.collection(collection)
                 .onSnapshot((querySnapshot) => {
-                    querySnapshot.docChanges().forEach(change => {
-                        if(change.type === 'added' || change.type === 'modified') {
-                            const word = change.doc.data();
-                            dispatch(wordActions.setWord(word));
-                        }
-                        else if(change.type === 'removed') {
-                            dispatch(wordActions.unsetWord(change.doc.id));
-                        }
-                    });
+                    if(!initWordsRef.current) {
+                        // Initial snapshot
+                        const words = [];
+                        querySnapshot.forEach(doc => {
+                            words.push(doc.data());
+                        });
+
+                        dispatch(wordActions.setWords(words));
+                    }
+                    else {
+                        querySnapshot.docChanges().forEach(change => {
+                            if(change.type === 'added' || change.type === 'modified') {
+                                const word = change.doc.data();
+                                dispatch(wordActions.setWord(word));
+                            }
+                            else if(change.type === 'removed') {
+                                dispatch(wordActions.unsetWord(change.doc.id));
+                            }
+                        });
+                    }
+
+
+                    initWordsRef.current = true;
                 });
         }
 
         return () => {
+            initWordsRef.current = null;
             if(unsubscribe) {
                 debug('Unsubscribing from words collection');
                 unsubscribe();

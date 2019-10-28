@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Container from '@material-ui/core/Container';
+import Toolbar from '@material-ui/core/Toolbar';
 import { wordSelector, hasTranslationsSelector } from '../../selectors/translationSelectors';
 import Sync from '../Sync';
 import TopBar from '../TopBar';
@@ -26,6 +27,7 @@ export default function LoggedIn() {
             <TopBar onMenuClick={openMenu} />
             <Menu open={menuOpen} onClose={closeMenu}/>
             <Container>
+                <Toolbar />
                 <Search />
 
                 <ExternalTranslations word={word} />

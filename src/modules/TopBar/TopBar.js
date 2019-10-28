@@ -71,7 +71,7 @@ export default function TopBar({ onMenuClick }: Props) {
     }, [books]);
 
     return (
-        <AppBar position="static">
+        <AppBar variant="fixed">
             <Toolbar>
                 <IconButton edge="start" color="inherit" aria-label="menu" onClick={onMenuClick}>
                     <MenuIcon />

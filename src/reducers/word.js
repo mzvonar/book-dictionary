@@ -21,6 +21,23 @@ export default function word(state: State = initialState, action: Action): State
             return initialState;
         }
 
+        case constants.SET_WORDS: {
+            const list = [];
+            const entities = {};
+
+            for(let i = 0, length = action.data.length; i < length; i += 1) {
+                const word = action.data[i];
+                list.push(word.word);
+                entities[word.word] = word;
+            }
+
+            return {
+                ...state,
+                list,
+                entities
+            };
+        }
+
         case constants.SET_WORD: {
             const index = state.list.indexOf(action.data.word);
 
