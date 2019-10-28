@@ -71,20 +71,29 @@ export default function Search() {
         setSuggestions([]);
     };
 
-    const handleSuggestionSelected = (e, { suggestionValue }) => {
-        setWord(suggestionValue);
-    };
-
     const getSuggestionValue = (suggestion) => suggestion;
+
+    const translate = (word) => {
+        dispatch(translateActions.translate(word.toLowerCase()));
+
+        setTimeout(() => {
+            if(inputRef.current) {
+                inputRef.current.setSelectionRange(0, inputRef.current.value.length);
+            }
+        });
+    };
 
     const onSubmit = (e) => {
         e.preventDefault();
+        translate(word);
+    };
 
-        dispatch(translateActions.translate(word.toLowerCase()));
+    const handleSuggestionSelected = (e, { suggestionValue }) => {
+        e.preventDefault();
+        e.stopPropagation();
 
-        if(inputRef.current) {
-            inputRef.current.setSelectionRange(0, inputRef.current.value.length);
-        }
+        setWord(suggestionValue);
+        translate(suggestionValue);
     };
 
     return (
